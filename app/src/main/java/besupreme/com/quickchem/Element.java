@@ -31,7 +31,14 @@ public class Element {
     }
 
     public String getSymbol() {
-        return symbol;
+        String[] extractedSymbols = symbol.split(", ");
+        String extractedSymbol = extractedSymbols[1];
+        return extractedSymbol;
+    }
+    public String getName(){
+        String[] extractedSymbols = symbol.split(", ");
+        String extractedName = extractedSymbols[0].toUpperCase();
+        return extractedName;
     }
 
     public String getAppearance() {

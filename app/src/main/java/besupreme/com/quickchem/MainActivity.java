@@ -5,8 +5,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import org.json.JSONArray;
@@ -26,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private final String mURL = "https://quikchem.herokuapp.com/api/allElements";
     private static final String TAG = MainActivity.class.getSimpleName();
     public PeriodicTable mPeriodicTable;
+    private RecyclerView elementList;
+    private LinearLayout searchContainer;
 
     public ProgressBar intialLoadingBar;
 
@@ -36,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         intialLoadingBar = (ProgressBar) findViewById(R.id.initialProgressBar);
+        elementList = (RecyclerView) findViewById(R.id.elementList);
+        elementList.setVisibility(View.INVISIBLE);
+
+        searchContainer = (LinearLayout) findViewById(R.id.searchContainer);
+        searchContainer.setVisibility(View.INVISIBLE);
 
 
         if( isNetworkAvailable() ){
@@ -70,7 +80,16 @@ public class MainActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            ListAdaptor listAdaptor = new ListAdaptor(MainActivity.this, mPeriodicTable);
+
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
+                            elementList.setLayoutManager(layoutManager);
+
+                            elementList.setAdapter(listAdaptor);
+
                             intialLoadingBar.setVisibility(View.INVISIBLE);
+                            searchContainer.setVisibility(View.VISIBLE);
+                            elementList.setVisibility(View.VISIBLE);
                         }
                     });
 
