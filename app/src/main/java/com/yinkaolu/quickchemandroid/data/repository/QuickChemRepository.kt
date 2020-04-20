@@ -19,8 +19,8 @@ object QuickChemRepository {
 
     fun loadElements() {
         QuickChemSource.getElements(object : QuickChemSource.Observer {
-            override fun onSuccess(elements: ArrayList<Element>) {
-                QuickChemRepository.elements.postValue(elements)
+            override fun onSuccess(elementsFromSource: ArrayList<Element>) {
+                elements.postValue(elementsFromSource)
             }
 
             override fun onFailure(errorMessage: String?) {
