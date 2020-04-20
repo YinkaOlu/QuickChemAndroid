@@ -25,7 +25,7 @@ To prevdent this, the repository acts as a single point of access to interact wi
 ### Business Logic / View Model Layer
 The View Model layer acts as the intermediate between the Data and the UI layer. 
 This layer determines what to do with user interaction and how to handle flow of data.
-In this simple application, ViewModel determines which data source to use, (ElementRepository) and passes display information to UI layer.
+In this simple application, ViewModel determines which data source to use (ElementRepository), how to process the data (make a periodic table) and passes display information to UI layer.
 
 ### UI / View layer
 This layer determines how data should be presented to user as well as passes potential user inputs to business logic layer to react to. In this applciation, View layer is responsible for presenting the list of elements in a scolliing list and presenting Element data in Element list items.
