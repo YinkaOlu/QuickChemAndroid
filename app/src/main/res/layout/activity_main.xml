@@ -10,35 +10,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:weightSum="100"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/searchContainer">
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_weight="95"
-            android:layout_height="wrap_content"
-            android:id="@+id/searchTextField"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:text="New Button"
-            android:id="@+id/searchBtn"/>
-    </LinearLayout>
-
     <ProgressBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/initialProgressBar"/>
 
     <ScrollView
-        android:layout_below="@+id/searchContainer"
+        android:layout_below="@+id/initialProgressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <androidx.recyclerview.widget.RecyclerView

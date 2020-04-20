@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
                     adapter = ElementListAdaptor(periodicTable)
                 }
                 initialProgressBar.visibility = View.INVISIBLE
-                searchContainer.visibility = View.VISIBLE
                 elementList.visibility = View.VISIBLE
             }
         })
