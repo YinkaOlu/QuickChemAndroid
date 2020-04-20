@@ -1,7 +1,6 @@
-package com.yinkaolu.quickchemandroid
+package com.yinkaolu.quickchemandroid.data.model
 
 import android.util.Log
-import com.yinkaolu.quickchemandroid.data.Element
 import java.util.*
 
 class PeriodicTable(var mElements: ArrayList<Element>) {

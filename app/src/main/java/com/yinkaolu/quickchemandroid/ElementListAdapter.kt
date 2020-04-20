@@ -3,9 +3,8 @@ package com.yinkaolu.quickchemandroid
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.yinkaolu.quickchemandroid.data.model.PeriodicTable
 import kotlinx.android.synthetic.main.element_list_item.view.*
 
 class ElementListAdaptor(private val periodicTable: PeriodicTable) :

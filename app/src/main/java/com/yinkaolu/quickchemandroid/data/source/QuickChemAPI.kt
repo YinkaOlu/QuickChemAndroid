@@ -1,5 +1,6 @@
-package com.yinkaolu.quickchemandroid.data
+package com.yinkaolu.quickchemandroid.data.source
 
+import com.yinkaolu.quickchemandroid.data.model.Element
 import retrofit2.Call
 import retrofit2.http.GET
 

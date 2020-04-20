@@ -1,4 +1,4 @@
-package com.yinkaolu.quickchemandroid.data
+package com.yinkaolu.quickchemandroid.data.model
 
 import com.google.gson.annotations.SerializedName
 
