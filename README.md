@@ -1,4 +1,4 @@
-# Quick_Chem_Android
+# Quick Chem Android App
 
 Simple Android application that uses chemistry data from an Open chemistry API (https://quikchem.herokuapp.com). 
 The purpose of this application is to practice consumption of an RESTful api and using basic MVVM architecture.
