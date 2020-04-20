@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="besupreme.com.quickchem.MainActivity">
+    tools:context=".MainActivity">
 
 
     <LinearLayout
@@ -41,12 +41,12 @@
         android:layout_below="@+id/searchContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/elementList">
 
-        </android.support.v7.widget.RecyclerView>
+        </androidx.recyclerview.widget.RecyclerView>
 
 
     </ScrollView>
