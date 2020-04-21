@@ -12,7 +12,7 @@ object QuickChemSource {
     private val okhttpClient = OkHttpClient().newBuilder().build()
     private val retrofitClient = Retrofit.Builder()
         .client(okhttpClient)
-        .baseUrl("https://quikchem.herokuapp.com/api/")
+        .baseUrl("https://us-central1-quickchemapi.cloudfunctions.net/app/api/v1/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
     private val quickChemAPI = retrofitClient.create(

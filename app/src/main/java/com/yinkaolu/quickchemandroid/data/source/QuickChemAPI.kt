@@ -5,6 +5,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface QuickChemAPI {
-    @GET("allElements")
+    @GET("elements")
     fun getElements(): Call<ArrayList<Element>>
 }
