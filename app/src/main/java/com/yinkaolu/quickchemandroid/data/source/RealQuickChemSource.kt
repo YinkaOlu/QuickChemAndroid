@@ -1,11 +1,8 @@
 package com.yinkaolu.quickchemandroid.data.source
 
-import com.yinkaolu.quickchemandroid.data.model.Element
+import androidx.lifecycle.MutableLiveData
 import okhttp3.OkHttpClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
+import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
@@ -18,22 +15,13 @@ class RealQuickChemSource @Inject constructor() : QuickChemSource {
         .build()
     private val quickChemAPI = retrofitClient.create(QuickChemAPI::class.java)
 
-    override fun getElements(observer: com.yinkaolu.quickchemandroid.data.source.Response) {
-        quickChemAPI.getElements().enqueue(object : Callback<ArrayList<Element>> {
-            override fun onFailure(call: Call<ArrayList<Element>>, t: Throwable) {
-                observer.onFailure(t.message)
-            }
-
-            override fun onResponse(call: Call<ArrayList<Element>>, response: Response<ArrayList<Element>>) {
-                if (response.isSuccessful && response.body() != null) {
-                    response.body()?.let {
-                        observer.onSuccess(it)
-                    }
-                } else {
-                    observer.onFailure("Call to QuickChem API was unsuccessful")
-                }
-
-            }
-        })
+    override suspend fun getElements(): SourceResponse {
+        val response = quickChemAPI.getElements().awaitResponse()
+        return if (!response.isSuccessful) SourceResponse.UnsuccessfulSourceResponse
+        else {
+            response.body()?.let {
+                SourceResponse.Success(it)
+            } ?: SourceResponse.MissingSourceResponse
+        }
     }
 }

@@ -18,9 +18,11 @@ class ElementsViewModel @Inject constructor(
 ): ViewModel() {
     init { quickChemRepository.loadElements() }
 
-    val elements: LiveData<ArrayList<Element>> = quickChemRepository.getElements()
+    val elements: LiveData<ArrayList<Element>?> = quickChemRepository.elements
 
-    val periodicTable: LiveData<PeriodicTable> = Transformations.map(elements){ elements ->
-        PeriodicTable(elements)
+    val periodicTable: LiveData<PeriodicTable?> = Transformations.map(elements){ elements ->
+        if (elements != null) PeriodicTable(elements) else null
     }
+
+    val loadErrorMessage: LiveData<String?> = quickChemRepository.loadError
 }

@@ -7,6 +7,7 @@ import com.yinkaolu.quickchemandroid.data.model.Element
  * Repository gate keeping access to Chemistry data
  */
 interface QuickChemRepository {
-    fun getElements(): LiveData<ArrayList<Element>>
+    val elements: LiveData<ArrayList<Element>?>
+    val loadError: LiveData<String?>
     fun loadElements()
 }
