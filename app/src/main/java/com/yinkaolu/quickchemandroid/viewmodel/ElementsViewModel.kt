@@ -6,13 +6,19 @@ import androidx.lifecycle.ViewModel
 import com.yinkaolu.quickchemandroid.data.model.Element
 import com.yinkaolu.quickchemandroid.data.model.PeriodicTable
 import com.yinkaolu.quickchemandroid.data.repository.QuickChemRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ElementsViewModel: ViewModel() {
-    init {
-        QuickChemRepository.loadElements()
-    }
+/**
+ * View Model controlling data interaction between Periodic Table elements
+ */
+@HiltViewModel
+class ElementsViewModel @Inject constructor(
+    quickChemRepository: QuickChemRepository
+): ViewModel() {
+    init { quickChemRepository.loadElements() }
 
-    val elements: LiveData<ArrayList<Element>> = QuickChemRepository.getElements()
+    val elements: LiveData<ArrayList<Element>> = quickChemRepository.getElements()
 
     val periodicTable: LiveData<PeriodicTable> = Transformations.map(elements){ elements ->
         PeriodicTable(elements)
